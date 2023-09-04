@@ -8,6 +8,10 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
+*.env
+*.env.example
+*.env.local
+*.env.staging
 web-build/
 
 # macOS
