@@ -1,4 +1,4 @@
-import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
+import { ClerkProvider, SignedIn, SignedOut, useAuth } from '@clerk/clerk-expo';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
@@ -25,7 +25,10 @@ const InitialLayout = () => {
   }, [isSignedIn]);
 
   return <Slot />;
+
+ 
 };
+
 
 const tokenCache = {
   async getToken(key: string) {

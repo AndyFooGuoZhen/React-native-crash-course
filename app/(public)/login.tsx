@@ -5,32 +5,57 @@ import { View, StyleSheet, TextInput, Button, Pressable, Text, Alert } from 'rea
 import Spinner from 'react-native-loading-spinner-overlay';
 import { OAuthButtons } from './OAuth';
 
-const login = () => {
+const Login = () => {
 
     const { signIn, setActive, isLoaded } = useSignIn();
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const onSignInPress = async () => {
-        if (!isLoaded) {
-          return;
-        }
-        setLoading(true);
-        try {
-          const completeSignIn = await signIn.create({
-            identifier: emailAddress,
-            password,
-          });
+    // const onSignInPress = async () => {
+    //   console.log(isLoaded);
+    //     if (!isLoaded) {
+    //       return;
+    //     }
+    //     setLoading(true);
+    //     try {
+    //       const completeSignIn = await signIn.create({
+    //         identifier: emailAddress,
+    //         password,
+    //       });
     
-          // This indicates the user is signed in
-          await setActive({ session: completeSignIn.createdSessionId });
-        } catch (err: any) {
-          alert(err.errors[0].message);
-        } finally {
-          setLoading(false);
-        }
-      };
+    //       // This indicates the user is signed in
+    //       await setActive({ session: completeSignIn.createdSessionId });
+    //     } catch (err: any) {
+    //       alert(err.errors[0].message);
+    //     } finally {
+    //       setLoading(false);
+    //     }
+    //   };
+
+      const onSignInPress = async () => {
+        console.log(isLoaded);
+          if (!isLoaded) {
+            return;
+          }
+          setLoading(true);
+          try {
+            const completeSignIn = await signIn.create({
+              identifier: emailAddress,
+              password,
+            });
+      
+            // This indicates the user is signed in
+            await setActive({ session: completeSignIn.createdSessionId });
+          } catch (err: any) {
+            alert(err.errors[0].message);
+          } finally {
+            setLoading(false);
+          }
+        };
+
+
+
 
      return (
     <View style={styles.container}>
@@ -38,7 +63,7 @@ const login = () => {
 
     <View style={styles.oauthView}>
         <OAuthButtons />
-      </View>
+    </View>
 
 
     <TextInput autoCapitalize="none" placeholder="Email" value={emailAddress} onChangeText={setEmailAddress} style={styles.inputField} />
@@ -60,7 +85,7 @@ const login = () => {
   )
 }
 
-export default login;
+export default Login;
 
 const styles = StyleSheet.create({
     container: {
