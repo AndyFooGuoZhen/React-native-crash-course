@@ -12,27 +12,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // const onSignInPress = async () => {
-    //   console.log(isLoaded);
-    //     if (!isLoaded) {
-    //       return;
-    //     }
-    //     setLoading(true);
-    //     try {
-    //       const completeSignIn = await signIn.create({
-    //         identifier: emailAddress,
-    //         password,
-    //       });
-    
-    //       // This indicates the user is signed in
-    //       await setActive({ session: completeSignIn.createdSessionId });
-    //     } catch (err: any) {
-    //       alert(err.errors[0].message);
-    //     } finally {
-    //       setLoading(false);
-    //     }
-    //   };
-
       const onSignInPress = async () => {
         console.log(isLoaded);
           if (!isLoaded) {
@@ -62,9 +41,16 @@ const Login = () => {
     <Spinner visible={loading} />
 
     <View style={styles.oauthView}>
-        <OAuthButtons />
+        <OAuthButtons strategy={'oauth_google'} />
     </View>
 
+    <View style={styles.oauthView}>
+        <OAuthButtons strategy={'oauth_facebook'} />
+    </View>
+    
+    <View style={styles.oauthView}>
+        <OAuthButtons strategy={'oauth_apple'} />
+    </View>
 
     <TextInput autoCapitalize="none" placeholder="Email" value={emailAddress} onChangeText={setEmailAddress} style={styles.inputField} />
     <TextInput placeholder="password" value={password} onChangeText={setPassword} secureTextEntry style={styles.inputField} />
