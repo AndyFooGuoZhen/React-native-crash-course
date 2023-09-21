@@ -26,6 +26,18 @@ const PublicLayout = () => {
         options={{
           headerTitle: 'Reset Password',
         }}></Stack.Screen>
+         <Stack.Screen
+        name="test"
+        options={{
+          headerTitle: 'Reset Password',
+        }}></Stack.Screen>
+       
+        <Stack.Screen
+        name="home"
+        options={{
+          headerTitle: 'Reset Password',
+        }}></Stack.Screen>
+        
     </Stack>
   );
 };

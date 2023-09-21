@@ -18,7 +18,7 @@ const InitialLayout = () => {
     console.log('User changed: ', isSignedIn);
 
     if (isSignedIn && !inTabsGroup) {
-      router.replace('/(auth)/home');
+      router.replace('(auth)/home');
     } else if (!isSignedIn) {
       router.replace('/(public)/login');
     }
